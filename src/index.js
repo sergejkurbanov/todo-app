@@ -1,5 +1,31 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { createGlobalStyle } from 'styled-components'
 import App from './App'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 10px;
+    @media (min-width: 768px) {
+      font-size: 11px;
+    }
+    @media (min-width: 1024px) {
+      font-size: 12px;
+    }
+  }
+`
+
+ReactDOM.render(
+  <React.Fragment>
+    <GlobalStyle />
+    <App />
+  </React.Fragment>,
+  document.getElementById('root')
+)
