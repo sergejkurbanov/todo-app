@@ -12,12 +12,12 @@ const GlobalStyle = createGlobalStyle`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: 10px;
+    font-size: 8px;
     @media (min-width: 768px) {
-      font-size: 11px;
+      font-size: 9px;
     }
     @media (min-width: 1024px) {
-      font-size: 12px;
+      font-size: 10px;
     }
   }
 `

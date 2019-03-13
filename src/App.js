@@ -30,6 +30,12 @@ const AppBase = ({ className }) => {
     setTodos(newTodos)
   }
 
+  const removeTodo = index => {
+    const newTodos = [...todos]
+    newTodos.splice(index, 1)
+    setTodos(newTodos)
+  }
+
   return (
     <div className={className}>
       <header>
@@ -42,6 +48,7 @@ const AppBase = ({ className }) => {
           <Todo
             key={index}
             index={index}
+            remove={removeTodo}
             complete={completeTodo}
             isCompleted={todo.isCompleted}
           >
