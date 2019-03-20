@@ -1,41 +1,22 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
+import {
+  createTodo,
+  deleteTodo,
+  completeTodo,
+} from './redux/modules/todos/actions'
+
 import Todo from './components/Todo'
 import TodoForm from './components/TodoForm'
 
-const AppBase = ({ className }) => {
-  const [todos, setTodos] = useState([
-    {
-      text: 'Learn about React',
-      isCompleted: false
-    },
-    {
-      text: 'Meet friend for lunch',
-      isCompleted: false
-    },
-    {
-      text: 'Build really cool todo app',
-      isCompleted: false
-    }
-  ])
-
-  const addTodo = text => {
-    const newTodos = [...todos, { text }]
-    setTodos(newTodos)
-  }
-
-  const completeTodo = index => {
-    const newTodos = [...todos]
-    newTodos[index].isCompleted = !todos[index].isCompleted
-    setTodos(newTodos)
-  }
-
-  const removeTodo = index => {
-    const newTodos = [...todos]
-    newTodos.splice(index, 1)
-    setTodos(newTodos)
-  }
-
+const AppBase = ({
+  className,
+  todos,
+  createTodo,
+  deleteTodo,
+  completeTodo,
+}) => {
   return (
     <div className={className}>
       <header>
@@ -43,12 +24,12 @@ const AppBase = ({ className }) => {
       </header>
       <main>
         <h1>Todos</h1>
-        <TodoForm addTodo={addTodo} />
+        <TodoForm createTodo={createTodo} />
         {todos.map((todo, index) => (
           <Todo
             key={index}
             index={index}
-            remove={removeTodo}
+            remove={deleteTodo}
             complete={completeTodo}
             isCompleted={todo.isCompleted}
           >
@@ -65,4 +46,13 @@ const App = styled(AppBase)`
   text-align: center;
 `
 
-export default App
+export default connect(
+  ({ todos }) => ({
+    todos: todos.all,
+  }),
+  {
+    createTodo,
+    completeTodo,
+    deleteTodo,
+  },
+)(App)

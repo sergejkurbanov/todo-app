@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 import Input from './Input'
 
-const TodoForm = ({ addTodo }) => {
+const TodoForm = ({ createTodo }) => {
   const [value, setValue] = useState('')
 
   const handleSubmit = e => {
     e.preventDefault()
-    if (!value) return
-    addTodo(value)
+
+    const sanitizedValue = value.trim()
+
+    if (!sanitizedValue) return
+
+    createTodo(sanitizedValue)
     setValue('')
   }
 

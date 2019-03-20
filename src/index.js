@@ -1,6 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { createGlobalStyle } from 'styled-components'
+
+import { Provider } from 'react-redux'
+import store from './redux/store'
 import App from './App'
 
 const GlobalStyle = createGlobalStyle`
@@ -23,9 +26,9 @@ const GlobalStyle = createGlobalStyle`
 `
 
 ReactDOM.render(
-  <React.Fragment>
+  <Provider store={store}>
     <GlobalStyle />
     <App />
-  </React.Fragment>,
-  document.getElementById('root')
+  </Provider>,
+  document.getElementById('root'),
 )
