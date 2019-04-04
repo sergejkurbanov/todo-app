@@ -1,28 +1,60 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import styled from 'styled-components'
+import { connect } from 'react-redux'
+import {
+  createTodo,
+  deleteTodo,
+  completeTodo,
+} from 'redux/modules/todos/actions'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
+import Todo from 'components/Todo'
+import TodoForm from 'components/TodoForm'
+import Header from 'components/Header'
+
+const App = ({ todos, createTodo, deleteTodo, completeTodo }) => {
+  return (
+    <AppWrapper>
+      <Header />
+      <main>
+        <TodoForm createTodo={createTodo} />
+        {todos.map((todo, index) => (
+          <Todo
+            key={index}
+            remove={() => deleteTodo(index)}
+            complete={() => completeTodo(index)}
+            isCompleted={todo.isCompleted}
           >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+            {todo.text}
+          </Todo>
+        ))}
+      </main>
+    </AppWrapper>
+  )
 }
 
-export default App;
+const AppWrapper = styled.div`
+  text-align: center;
+
+  main {
+    padding: 2rem;
+    display: grid;
+    grid-gap: 1rem;
+    justify-content: center;
+  }
+
+  p {
+    font-size: 3rem;
+    margin: 1rem;
+  }
+`
+
+export default connect(
+  ({ todos }) => ({
+    todos: todos.all,
+  }),
+  {
+    createTodo,
+    completeTodo,
+    deleteTodo,
+  },
+)(App)
