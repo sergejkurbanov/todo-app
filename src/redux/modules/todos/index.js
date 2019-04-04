@@ -3,7 +3,7 @@ import types from './types'
 const defaultState = {
   all: [
     {
-      text: 'Feed my cats',
+      text: 'Walk my cats',
       isCompleted: false,
     },
     {

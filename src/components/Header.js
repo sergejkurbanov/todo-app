@@ -5,9 +5,9 @@ import Paragraph from 'components/Paragraph'
 
 const Header = () => (
   <HeaderWrapper>
-    <Title type="h1">Todo app</Title>
+    <Title type="h1">My todos</Title>
     <Paragraph>
-      I've heard a puppy is fed every time someone makes a todo app.
+      I heard a puppy is fed every time someone makes a todo app.
     </Paragraph>
   </HeaderWrapper>
 )
