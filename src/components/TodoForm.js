@@ -8,7 +8,6 @@ const TodoForm = ({ createTodo }) => {
     e.preventDefault()
 
     const sanitizedValue = value.trim()
-
     if (!sanitizedValue) return
 
     createTodo(sanitizedValue)
@@ -21,6 +20,7 @@ const TodoForm = ({ createTodo }) => {
         type="text"
         value={value}
         onChange={e => setValue(e.target.value)}
+        placeholder="Enter a new task..."
       />
     </form>
   )

@@ -1,15 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createGlobalStyle } from 'styled-components'
-
-import { Provider } from 'react-redux'
+import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import { Provider as StoreProvider } from 'react-redux'
+import theme from './theme'
 import store from './redux/store'
 import App from './App'
 
 const GlobalStyle = createGlobalStyle`
-  body {
+  html, body {
+    width: 100%;
+    height: 100%;
     margin: 0;
-    padding: 0;
+    color: ${props => props.theme['color-gray--dark']};
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
       "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
       sans-serif;
@@ -23,12 +25,18 @@ const GlobalStyle = createGlobalStyle`
       font-size: 10px;
     }
   }
+
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
 `
 
 ReactDOM.render(
-  <Provider store={store}>
-    <GlobalStyle />
-    <App />
-  </Provider>,
+  <ThemeProvider theme={theme}>
+    <StoreProvider store={store}>
+      <GlobalStyle />
+      <App />
+    </StoreProvider>
+  </ThemeProvider>,
   document.getElementById('root'),
 )
