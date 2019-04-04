@@ -5,24 +5,16 @@ import {
   createTodo,
   deleteTodo,
   completeTodo,
-} from './redux/modules/todos/actions'
+} from 'redux/modules/todos/actions'
 
-import Todo from './components/Todo'
-import TodoForm from './components/TodoForm'
+import Todo from 'components/Todo'
+import TodoForm from 'components/TodoForm'
+import Header from 'components/Header'
 
-const AppBase = ({
-  className,
-  todos,
-  createTodo,
-  deleteTodo,
-  completeTodo,
-}) => {
+const App = ({ todos, createTodo, deleteTodo, completeTodo }) => {
   return (
-    <div className={className}>
-      <header>
-        <h1>Todo app</h1>
-        <p>A demonstrational app in React</p>
-      </header>
+    <AppWrapper>
+      <Header />
       <main>
         <TodoForm createTodo={createTodo} />
         {todos.map((todo, index) => (
@@ -36,35 +28,18 @@ const AppBase = ({
           </Todo>
         ))}
       </main>
-      <footer />
-    </div>
+    </AppWrapper>
   )
 }
 
-const App = styled(AppBase)`
+const AppWrapper = styled.div`
   text-align: center;
-
-  header {
-    text-align: left;
-    background-color: ${props => props.theme['color-main--primary']};
-    padding: 2rem;
-
-    @media only screen and (min-width: ${props => props.theme['screen-xs']}) {
-      padding: 3rem 10%;
-    }
-
-    @media only screen and (min-width: ${props => props.theme['screen-sm']}) {
-      padding: 4rem 20%;
-    }
-  }
 
   main {
     padding: 2rem;
-  }
-
-  h1 {
-    font-size: 7rem;
-    margin: 0;
+    display: grid;
+    grid-gap: 1rem;
+    justify-content: center;
   }
 
   p {

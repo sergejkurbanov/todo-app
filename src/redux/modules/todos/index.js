@@ -3,15 +3,15 @@ import types from './types'
 const defaultState = {
   all: [
     {
-      text: 'Learn about React',
+      text: 'Feed my cats',
       isCompleted: false,
     },
     {
-      text: 'Meet friend for lunch',
+      text: 'Meet girlfriend for breakfast',
       isCompleted: true,
     },
     {
-      text: 'Build really cool todo app',
+      text: 'Build a really cool todo app',
       isCompleted: false,
     },
   ],

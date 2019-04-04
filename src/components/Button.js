@@ -1,17 +1,18 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 const Button = styled.button`
-  background: transparent;
+  background: ${props => props.theme['color-main--secondary']};
+  border: 0.2rem solid ${props => props.theme['color-main--secondary']};
   border-radius: ${props => props.theme['border-radius']};
-  border: 0.2rem solid;
-  color: #282c34;
-  margin: 0.1rem 0.3rem;
-  padding: 0.1rem 0.5rem;
-  font-size: inherit;
+  color: ${props => props.theme['color-white']};
+  padding: 0.5rem 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
+  transition-duration: 0.2s;
 
   &:hover {
-    background-color: white;
+    color: ${props => props.theme['color-main--secondary']};
+    background-color: ${props => props.theme['color-white']};
   }
   &:focus {
     outline-color: black;
