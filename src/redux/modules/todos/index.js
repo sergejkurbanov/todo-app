@@ -1,20 +1,7 @@
-import types from './types'
+import * as types from './types'
 
 const defaultState = {
-  all: [
-    {
-      text: 'Walk my cats',
-      isCompleted: false,
-    },
-    {
-      text: 'Meet girlfriend for breakfast',
-      isCompleted: true,
-    },
-    {
-      text: 'Build a really cool todo app',
-      isCompleted: false,
-    },
-  ],
+  all: [],
 }
 
 const todosReducer = (state = defaultState, { type, payload }) => {
@@ -36,22 +23,22 @@ const todosReducer = (state = defaultState, { type, payload }) => {
 
       newTodos.splice(payload.index, 1)
 
-      return {
-        ...state,
-        all: newTodos,
-      }
+      return { ...state, all: newTodos }
     }
 
     case types.COMPLETE_TODO: {
-      const { index } = payload
       const newTodos = [...state.all]
+      const { index } = payload
 
       newTodos[index].isCompleted = !newTodos[index].isCompleted
 
-      return {
-        ...state,
-        all: newTodos,
-      }
+      return { ...state, all: newTodos }
+    }
+
+    case types.GET_TODOS_SUCCESS: {
+      const { data } = payload
+
+      return { ...state, all: data }
     }
 
     default:

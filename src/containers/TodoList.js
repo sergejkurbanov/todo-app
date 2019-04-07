@@ -1,29 +1,42 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import {
   createTodo,
   deleteTodo,
   completeTodo,
+  getTodos,
 } from 'redux/modules/todos/actions'
 import Todo from 'components/Todo'
 import TodoForm from 'components/TodoForm'
 
-const TodoList = ({ todos, createTodo, deleteTodo, completeTodo }) => (
-  <TodoListWrapper>
-    <TodoForm createTodo={createTodo} />
-    {todos.map((todo, index) => (
-      <Todo
-        key={index}
-        remove={() => deleteTodo(index)}
-        complete={() => completeTodo(index)}
-        isCompleted={todo.isCompleted}
-      >
-        {todo.text}
-      </Todo>
-    ))}
-  </TodoListWrapper>
-)
+const TodoList = ({
+  todos,
+  createTodo,
+  deleteTodo,
+  completeTodo,
+  getTodos,
+}) => {
+  useEffect(() => {
+    getTodos()
+  }, [])
+
+  return (
+    <TodoListWrapper>
+      <TodoForm createTodo={createTodo} />
+      {todos.map((todo, index) => (
+        <Todo
+          key={index}
+          remove={() => deleteTodo(index)}
+          complete={() => completeTodo(index)}
+          isCompleted={todo.isCompleted}
+        >
+          {todo.text}
+        </Todo>
+      ))}
+    </TodoListWrapper>
+  )
+}
 
 const TodoListWrapper = styled.main`
   padding: 2rem;
@@ -40,5 +53,6 @@ export default connect(
     createTodo,
     completeTodo,
     deleteTodo,
+    getTodos,
   },
 )(TodoList)
