@@ -7,6 +7,7 @@ export const theme = {
   'color-gray--dark': '#3b4548',
   'color-gray--light': '#F8FBFC',
   'color-white': '#FFFFFF',
+  'color-black': '#000000',
 
   'border-radius': '0.3rem',
 
@@ -21,7 +22,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     margin: 0;
-    color: ${props => props.theme['color-gray--dark']};
+    color: ${props => props.theme['color-black']};
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
       "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
       sans-serif;

@@ -24,14 +24,14 @@ const TodoList = ({
   return (
     <TodoListWrapper>
       <TodoForm createTodo={createTodo} />
-      {todos.map((todo, index) => (
+      {todos.map(({ id, text, isCompleted }) => (
         <Todo
-          key={index}
-          remove={() => deleteTodo(index)}
-          complete={() => completeTodo(index)}
-          isCompleted={todo.isCompleted}
+          key={id}
+          remove={() => deleteTodo(id)}
+          complete={() => completeTodo({ id: id, isCompleted: !isCompleted })}
+          isCompleted={isCompleted}
         >
-          {todo.text}
+          {text}
         </Todo>
       ))}
     </TodoListWrapper>

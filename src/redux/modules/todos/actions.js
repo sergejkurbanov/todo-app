@@ -5,14 +5,11 @@ export const createTodo = text => ({
   payload: { text },
 })
 
-export const deleteTodo = index => ({
-  type: types.DELETE_TODO,
-  payload: { index },
+export const completeTodo = ({ id, isCompleted }) => ({
+  type: types.COMPLETE_TODO,
+  payload: { id, isCompleted },
 })
 
-export const completeTodo = index => ({
-  type: types.COMPLETE_TODO,
-  payload: { index },
-})
+export const deleteTodo = id => ({ type: types.DELETE_TODO, payload: { id } })
 
 export const getTodos = () => ({ type: types.GET_TODOS })
