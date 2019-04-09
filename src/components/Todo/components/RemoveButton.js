@@ -3,7 +3,12 @@ import { ReactComponent as Trash } from 'icons/trash.svg'
 import styled from 'styled-components'
 
 const RemoveButton = ({ onClick }) => (
-  <RemoveButtonWrapper onClick={onClick}>
+  <RemoveButtonWrapper
+    onClick={e => {
+      e.stopPropagation()
+      onClick()
+    }}
+  >
     <Trash />
   </RemoveButtonWrapper>
 )
