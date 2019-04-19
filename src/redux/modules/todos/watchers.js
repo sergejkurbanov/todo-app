@@ -15,6 +15,8 @@ function* watchCreateTodo() {
 }
 
 function* watchTodoUpdates() {
+  yield take(types.GET_TODOS)
+
   while (true) {
     try {
       const newTodos = yield take(workers.getTodosChannel)
@@ -26,10 +28,10 @@ function* watchTodoUpdates() {
 }
 
 const todoSagas = [
-  watchCreateTodo,
-  watchTodoUpdates,
   watchDeleteTodo,
   watchCompleteTodo,
+  watchCreateTodo,
+  watchTodoUpdates,
 ]
 
 export default todoSagas

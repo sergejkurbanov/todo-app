@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import Input from './Input'
-import Button from './Button'
+import Input from 'components/Input'
+import Button from 'components/Button'
 
 const TodoForm = ({ createTodo }) => {
   const [value, setValue] = useState('')
@@ -33,13 +33,7 @@ const TodoFormWrapper = styled.form`
   display: grid;
   grid-template-columns: 1fr auto;
   grid-gap: 0.8rem;
-  width: 100%;
-  align-items: center;
   margin-bottom: 1rem;
-
-  @media only screen and (min-width: ${props => props.theme['screen-xs']}) {
-    width: 50rem;
-  }
 `
 
 export default TodoForm

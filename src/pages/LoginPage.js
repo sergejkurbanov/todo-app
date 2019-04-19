@@ -1,0 +1,28 @@
+import React from 'react'
+import { Flex } from '@rebass/grid'
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { loginUser } from 'redux/modules/users/actions'
+import LoginForm from 'forms/LoginForm'
+import Container from 'components/Container'
+
+const LoginPage = ({ user, location, loginUser }) => {
+  const { from } = location.state || { from: { pathname: '/' } }
+
+  if (user) return <Redirect to={from} />
+
+  return (
+    <Flex>
+      <Container as="main" mt={100} maxWidth="350px">
+        <LoginForm loginUser={loginUser} />
+      </Container>
+    </Flex>
+  )
+}
+
+export default connect(
+  ({ users }) => ({
+    user: users.current,
+  }),
+  { loginUser },
+)(LoginPage)

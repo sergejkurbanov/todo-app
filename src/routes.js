@@ -1,21 +1,21 @@
-import SignUp from 'pages/SignUp'
-import LogIn from 'pages/LogIn'
-import Todos from 'pages/Todos'
+import SignupPage from 'pages/SignupPage'
+import LoginPage from 'pages/LoginPage'
+import TodosPage from 'pages/TodosPage'
 
 const routes = [
   {
     path: '/',
-    component: Todos,
+    component: TodosPage,
     exact: true,
     pvt: false,
   },
   {
     path: '/sign-up',
-    component: SignUp,
+    component: SignupPage,
   },
   {
     path: '/log-in',
-    component: LogIn,
+    component: LoginPage,
   },
 ]
 

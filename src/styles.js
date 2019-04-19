@@ -11,10 +11,20 @@ export const theme = {
 
   'border-radius': '0.3rem',
 
-  'screen-xs': '480px',
+  'screen-xs': '576px',
   'screen-sm': '768px',
   'screen-md': '992px',
   'screen-lg': '1200px',
+
+  get 'box-shadow'() {
+    return `0 0 2px 0 ${this['color-gray']}`
+  },
+  get 'box-shadow--strong'() {
+    return `0 0 8px 0 ${this['color-gray']}`
+  },
+  get 'box-shadow--hover'() {
+    return `0 0 2px 0 ${this['color-gray--dark']}`
+  },
 }
 
 export const GlobalStyle = createGlobalStyle`
@@ -29,6 +39,13 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 16px;
+
+    a {
+      color: inherit;
+    }
+    a:hover {
+      color: ${props => props.theme['color-gray--dark']};
+    }
   }
 
   *, *:before, *:after {
