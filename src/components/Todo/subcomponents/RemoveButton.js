@@ -1,6 +1,6 @@
 import React from 'react'
-import { ReactComponent as Trash } from 'icons/trash.svg'
 import styled from 'styled-components'
+import Icon from 'components/Icon'
 
 const RemoveButton = ({ onClick }) => (
   <RemoveButtonWrapper
@@ -9,7 +9,7 @@ const RemoveButton = ({ onClick }) => (
       onClick()
     }}
   >
-    <Trash />
+    <Icon size="24" icon="trash" />
   </RemoveButtonWrapper>
 )
 
@@ -20,13 +20,13 @@ const RemoveButtonWrapper = styled.div`
   transition-duration: 0.2s;
   border-top-right-radius: ${props => props.theme['border-radius']};
   border-bottom-right-radius: ${props => props.theme['border-radius']};
-  stroke: ${props => props.theme['color-main--secondary']};
+  fill: ${props => props.theme['color-main--secondary']};
   border-left: 0.1rem solid ${props => props.theme['color-main--secondary']};
   display: grid;
   align-items: center;
 
   &:hover {
-    stroke: ${props => props.theme['color-white']};
+    fill: ${props => props.theme['color-white']};
     background-color: ${props => props.theme['color-main--secondary']};
   }
 `
