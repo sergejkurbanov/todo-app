@@ -25,21 +25,18 @@ const SignupForm = ({ createUser }) => {
         type="email"
         value={email}
         onChange={e => setEmail(e.target.value)}
-        placeholder="email"
         label="Email"
       />
       <Input
         type="password"
         value={password}
         onChange={e => setPassword(e.target.value)}
-        placeholder="password"
         label="Password"
       />
       <Input
         type="password"
         value={confirmPassword}
         onChange={e => setConfirmPassword(e.target.value)}
-        placeholder="confirm password"
         label="Confirm password"
       />
       <span>

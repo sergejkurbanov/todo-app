@@ -20,14 +20,12 @@ const LoginForm = ({ loginUser }) => {
         type="email"
         value={email}
         onChange={e => setEmail(e.target.value)}
-        placeholder="email"
         label="Email"
       />
       <Input
         type="password"
         value={password}
         onChange={e => setPassword(e.target.value)}
-        placeholder="email"
         label="Password"
       />
       <span>
