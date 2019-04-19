@@ -1,9 +1,8 @@
 import styled, { css } from 'styled-components'
 
 export default styled.span`
-  text-align: left;
-  margin-top: -0.3rem;
-  padding: 0.8rem 0;
+  margin-top: -0.2rem;
+  padding: 0.5rem 0;
 
   ${props =>
     props.isCompleted &&

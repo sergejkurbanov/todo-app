@@ -10,11 +10,11 @@ const Checkbox = props => (
 
 const CheckboxWrapper = styled.span`
   border-radius: ${props => props.theme['border-radius']};
-  border: 0.2rem solid ${props => props.theme['color-gray']};
-  width: 2.5rem;
-  height: 2.5rem;
-  font-size: ${props => (props.isChecked ? '2.2rem' : '0')};
-  line-height: 1.5rem;
+  border: 0.1rem solid ${props => props.theme['color-gray']};
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: ${props => (props.isChecked ? '1.2rem' : '0')};
+  line-height: 1rem;
   cursor: pointer;
   transition-duration: 0.1s;
 

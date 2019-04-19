@@ -1,10 +1,20 @@
+import React from 'react'
 import styled from 'styled-components'
+import Label from './subcomponents/Label'
 
-const Input = styled.input`
+const Input = ({ label, children, ...rest }) => (
+  <Label>
+    {label}
+    <InputWrapper {...rest} />
+  </Label>
+)
+
+const InputWrapper = styled.input`
   border: none;
   padding: 0.5rem;
+  margin-top: 0.5rem;
+  width: 100%;
   font-family: inherit;
-  font-size: 2rem;
   border-radius: ${props => props.theme['border-radius']};
   box-shadow: 0 0 0 1px ${props => props.theme['color-gray']};
 

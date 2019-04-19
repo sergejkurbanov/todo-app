@@ -16,12 +16,12 @@ const RemoveButton = ({ onClick }) => (
 const RemoveButtonWrapper = styled.div`
   height: 100%;
   cursor: pointer;
-  padding: 0 0.8rem;
+  padding: 0 0.5rem;
   transition-duration: 0.2s;
   border-top-right-radius: ${props => props.theme['border-radius']};
   border-bottom-right-radius: ${props => props.theme['border-radius']};
   stroke: ${props => props.theme['color-main--secondary']};
-  border-left: 0.2rem solid ${props => props.theme['color-main--secondary']};
+  border-left: 0.1rem solid ${props => props.theme['color-main--secondary']};
   display: grid;
   align-items: center;
 
