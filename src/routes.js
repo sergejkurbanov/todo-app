@@ -7,7 +7,7 @@ const routes = [
     path: '/',
     component: TodosPage,
     exact: true,
-    pvt: false,
+    pvt: true,
   },
   {
     path: '/sign-up',

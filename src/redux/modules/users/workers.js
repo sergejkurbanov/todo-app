@@ -21,7 +21,7 @@ export function* loginUser({ payload }) {
 
     yield put({
       type: types.LOGIN_USER_SUCCESS,
-      payload: { user: response.user },
+      payload: { user: response.user.uid },
     })
   } catch (error) {
     yield put({ type: types.LOGIN_USER_ERROR, payload: { error } })
