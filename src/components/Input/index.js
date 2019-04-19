@@ -2,17 +2,17 @@ import React from 'react'
 import styled from 'styled-components'
 import Label from './subcomponents/Label'
 
-const Input = ({ label, children, ...rest }) => (
+const Input = props => (
   <Label>
-    {label}
-    <InputWrapper {...rest} />
+    {props.label}
+    <InputWrapper {...props} />
   </Label>
 )
 
 const InputWrapper = styled.input`
   border: none;
   padding: 0.5rem;
-  margin-top: 0.5rem;
+  margin-top: ${props => (props.label ? '0.5rem' : 0)};
   width: 100%;
   font-family: inherit;
   border-radius: ${props => props.theme['border-radius']};
