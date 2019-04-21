@@ -5,11 +5,11 @@ export const createTodo = text => ({
   payload: { text },
 })
 
-export const completeTodo = ({ id, isCompleted }) => ({
+export const toggleTodo = id => ({
   type: types.COMPLETE_TODO,
-  payload: { id, isCompleted },
+  payload: { id },
 })
 
 export const deleteTodo = id => ({ type: types.DELETE_TODO, payload: { id } })
 
-export const getTodos = () => ({ type: types.GET_TODOS })
+export const getTodos = user => ({ type: types.GET_TODOS, payload: { user } })

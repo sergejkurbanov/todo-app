@@ -4,7 +4,7 @@ import {
   getTodos,
   createTodo,
   deleteTodo,
-  completeTodo,
+  toggleTodo,
 } from 'redux/modules/todos/actions'
 import { connect } from 'react-redux'
 import Header from 'components/Header/index'
@@ -13,14 +13,15 @@ import Container from 'components/Container'
 import TodoForm from 'forms/TodoForm'
 
 const TodosPage = ({
+  user,
   todos,
   createTodo,
   deleteTodo,
-  completeTodo,
+  toggleTodo,
   getTodos,
 }) => {
   useEffect(() => {
-    getTodos()
+    getTodos(user)
   }, [])
 
   return (
@@ -32,7 +33,7 @@ const TodosPage = ({
           <TodoList
             todos={todos}
             deleteTodo={deleteTodo}
-            completeTodo={completeTodo}
+            toggleTodo={toggleTodo}
           />
         </Container>
       </Flex>
@@ -41,13 +42,14 @@ const TodosPage = ({
 }
 
 export default connect(
-  ({ todos }) => ({
+  ({ todos, users }) => ({
     todos: todos.all,
+    user: users.current,
   }),
   {
     getTodos,
     createTodo,
-    completeTodo,
+    toggleTodo,
     deleteTodo,
   },
 )(TodosPage)

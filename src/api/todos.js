@@ -1,24 +1,46 @@
-import { firestore } from './firebase'
+import uuid from 'uuid/v4'
+import { firestore, auth, firebase } from './firebase'
 
-const todosDb = firestore.collection('todos')
+const usersDb = firestore.collection('users')
 
-export const deleteTodo = ({ id }) => todosDb.doc(id).delete()
+export const deleteTodo = todo =>
+  usersDb.doc(auth.currentUser.uid).update({
+    todos: firebase.firestore.FieldValue.arrayRemove(todo),
+  })
 
-export const completeTodo = ({ id, isCompleted }) =>
-  todosDb.doc(id).set({ isCompleted }, { merge: true })
+export const toggleTodo = id => {
+  const userDocRef = usersDb.doc(auth.currentUser.uid)
 
-export const createTodo = ({ text }) =>
-  todosDb.add({ text, isCompleted: false })
+  firestore.runTransaction(async transaction => {
+    const user = await transaction.get(userDocRef)
+    const newTodos = [...user.data().todos]
+    const toToggleIndex = newTodos.findIndex(todo => todo.id === id)
 
-export const createGetTodosSocket = callback =>
-  todosDb.onSnapshot(data => {
-    const newTodos = data.docs.map(doc => ({ id: doc.id, ...doc.data() }))
-    callback(newTodos)
+    newTodos[toToggleIndex].isCompleted = !newTodos[toToggleIndex].isCompleted
+
+    transaction.update(userDocRef, { ...user.data(), todos: newTodos })
+  })
+}
+
+export const createTodo = text => {
+  const newTodo = {
+    id: uuid(),
+    text,
+    isCompleted: false,
+  }
+
+  return usersDb.doc(auth.currentUser.uid).update({
+    todos: firebase.firestore.FieldValue.arrayUnion(newTodo),
+  })
+}
+export const createGetTodosSocket = (user, callback) =>
+  usersDb.doc(user).onSnapshot(doc => {
+    callback(doc.data().todos)
   })
 
 const todosApi = {
   deleteTodo,
-  completeTodo,
+  toggleTodo,
   createTodo,
   createGetTodosSocket,
 }
