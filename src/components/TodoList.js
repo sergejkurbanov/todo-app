@@ -3,14 +3,14 @@ import Todo from 'components/Todo'
 
 const TodoList = ({ todos, deleteTodo, toggleTodo }) => (
   <React.Fragment>
-    {todos.map(({ id, text, isCompleted }) => (
+    {todos.map(todo => (
       <Todo
-        key={id}
-        remove={() => deleteTodo({ id, text, isCompleted })}
-        complete={() => toggleTodo(id)}
-        isCompleted={isCompleted}
+        key={todo.id}
+        remove={() => deleteTodo(todo)}
+        complete={() => toggleTodo(todo.id)}
+        isCompleted={todo.isCompleted}
       >
-        {text}
+        {todo.text}
       </Todo>
     ))}
   </React.Fragment>
