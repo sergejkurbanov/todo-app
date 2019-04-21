@@ -27,12 +27,14 @@ export const createTodo = text => {
     id: uuid(),
     text,
     isCompleted: false,
+    createdAt: firebase.firestore.Timestamp.now(),
   }
 
   return usersDb.doc(auth.currentUser.uid).update({
     todos: firebase.firestore.FieldValue.arrayUnion(newTodo),
   })
 }
+
 export const createGetTodosSocket = (user, callback) =>
   usersDb.doc(user).onSnapshot(doc => {
     callback(doc.data().todos)
