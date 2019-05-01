@@ -4,6 +4,8 @@ import { ThemeProvider } from 'styled-components'
 import { PersistGate } from 'redux-persist/integration/react'
 import { Provider as StoreProvider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import { store, persistor } from './redux/store'
 import App from './containers/App'
 import { GlobalStyle, theme } from './styles'
@@ -15,6 +17,7 @@ ReactDOM.render(
         <BrowserRouter>
           <GlobalStyle />
           <App />
+          <ToastContainer hideProgressBar position="top-center" />
         </BrowserRouter>
       </PersistGate>
     </StoreProvider>

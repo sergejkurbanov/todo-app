@@ -1,12 +1,15 @@
 import { put, call } from 'redux-saga/effects'
+import { toast } from 'react-toastify'
 import usersApi from 'api/users'
 import * as types from './types'
 
 export function* createUser({ payload }) {
   try {
     yield call(() => usersApi.createUser(payload))
+    toast.success('User successfully created. Proceed to log in.')
     yield put({ type: types.CREATE_USER_SUCCESS })
   } catch (error) {
+    toast.error(error.message || 'Error creating account.')
     yield put({ type: types.CREATE_USER_ERROR, payload: { error } })
   }
 }
@@ -20,6 +23,7 @@ export function* loginUser({ payload }) {
       payload: { user: response.user.uid },
     })
   } catch (error) {
+    toast.error(error.message || 'Error signing in user.')
     yield put({ type: types.LOGIN_USER_ERROR, payload: { error } })
   }
 }

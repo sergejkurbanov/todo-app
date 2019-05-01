@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { toast } from 'react-toastify'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
@@ -14,7 +15,12 @@ const SignupForm = ({ createUser }) => {
   const handleSubmit = e => {
     e.preventDefault()
 
-    if (password !== confirmPassword) return
+    if (password !== confirmPassword) {
+      toast.error(
+        "Passwords need to match! Make sure you've entered the same password twice.",
+      )
+      return
+    }
 
     createUser({ email, password })
   }
@@ -42,7 +48,7 @@ const SignupForm = ({ createUser }) => {
       <span>
         Already have an account? <Link to="/log-in">Log in!</Link>
       </span>
-      <Button onClick={handleSubmit}>Log in</Button>
+      <Button onClick={handleSubmit}>Sign up</Button>
     </SignupFormWrapper>
   )
 }
