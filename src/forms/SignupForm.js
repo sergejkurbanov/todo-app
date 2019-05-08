@@ -6,8 +6,9 @@ import { Link } from 'react-router-dom'
 import { signupUser } from 'redux/modules/auth/actions'
 import Input from 'components/Input'
 import Button from 'components/Button'
+import Loading from 'components/Loading'
 
-const SignupForm = ({ signupUser }) => {
+const SignupForm = ({ signupUser, isLoading }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -26,6 +27,7 @@ const SignupForm = ({ signupUser }) => {
 
   return (
     <SignupFormWrapper onSubmit={handleSubmit}>
+      <Loading isLoading={isLoading} />
       <Input
         type="email"
         value={email}
@@ -64,6 +66,8 @@ const SignupFormWrapper = styled.form`
 `
 
 export default connect(
-  null,
+  ({ auth }) => ({
+    isLoading: auth.isSignupLoading,
+  }),
   { signupUser },
 )(SignupForm)

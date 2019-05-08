@@ -2,7 +2,7 @@ import React from 'react'
 import { Flex } from '@rebass/grid'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { loginUser } from 'redux/modules/users/actions'
+import { loginUser } from 'redux/modules/auth/actions'
 import LoginForm from 'forms/LoginForm'
 import Container from 'components/Container'
 
@@ -21,8 +21,8 @@ const LoginPage = ({ user, location, loginUser }) => {
 }
 
 export default connect(
-  ({ users }) => ({
-    user: users.current,
+  ({ auth }) => ({
+    user: auth.current,
   }),
   { loginUser },
 )(LoginPage)

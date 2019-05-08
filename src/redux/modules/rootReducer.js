@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
 import todos from './todos'
-import users from './users'
+import auth from './auth'
 
-export default combineReducers({ todos, users })
+export default combineReducers({ todos, auth })

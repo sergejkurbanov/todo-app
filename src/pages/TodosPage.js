@@ -42,9 +42,9 @@ const TodosPage = ({
 }
 
 export default connect(
-  ({ todos, users }) => ({
+  ({ todos, auth }) => ({
     todos: todos.all,
-    user: users.current,
+    user: auth.current,
   }),
   {
     getTodos,

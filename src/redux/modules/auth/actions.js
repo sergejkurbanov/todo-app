@@ -1,7 +1,7 @@
 import * as types from './types'
 
-export const createUser = ({ email, password }) => ({
-  type: types.CREATE_USER,
+export const signupUser = ({ email, password }) => ({
+  type: types.SIGNUP_USER,
   payload: { email, password },
 })
 

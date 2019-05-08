@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-import { logoutUser } from 'redux/modules/users/actions'
+import { logoutUser } from 'redux/modules/auth/actions'
 import Icon from 'components/Icon'
 
 const LogoutButton = props => (

@@ -16,6 +16,6 @@ const App = ({ user }) => (
   </Switch>
 )
 
-export default connect(({ users }) => ({
-  user: users.current,
+export default connect(({ auth }) => ({
+  user: auth.current,
 }))(App)

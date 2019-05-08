@@ -3,7 +3,7 @@ import { auth, firestore, firebase } from './firebase'
 
 const usersDb = firestore.collection('users')
 
-export const createUser = async ({ email, password }) => {
+export const signupUser = async ({ email, password }) => {
   const authRes = await auth.createUserWithEmailAndPassword(email, password)
 
   usersDb.doc(authRes.user.uid).set({
@@ -31,7 +31,7 @@ export const loginUser = ({ email, password }) =>
 export const logoutUser = () => auth.signOut()
 
 const usersApi = {
-  createUser,
+  signupUser,
   loginUser,
   logoutUser,
 }
