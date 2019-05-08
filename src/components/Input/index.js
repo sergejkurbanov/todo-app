@@ -23,7 +23,7 @@ const InputWrapper = styled.input`
   }
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 2px ${props => props.theme['color-main--primary']};
+    box-shadow: 0 0 0 2px ${props => props.theme['color-primary']};
   }
 `
 

@@ -42,7 +42,7 @@ const LoginFormWrapper = styled.form`
   justify-items: center;
   padding: 1.5rem;
   border-radius: ${props => props.theme['border-radius']};
-  background-color: ${props => props.theme['color-main--primary']};
+  background-color: ${props => props.theme['color-primary']};
   box-shadow: ${props => props.theme['box-shadow--strong']};
 `
 
