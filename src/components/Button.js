@@ -11,13 +11,14 @@ const Button = styled.button`
   text-transform: uppercase;
   font-weight: 600;
   max-width: 10rem;
+  outline: none;
 
   &:hover {
     color: ${props => props.theme['color-secondary']};
     background-color: ${props => props.theme['color-white']};
   }
   &:focus {
-    outline-color: ${props => props.theme['color-secondary']};
+    border-color: firebrick;
   }
 `
 
