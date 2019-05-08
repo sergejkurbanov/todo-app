@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
-import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { signupUser } from 'redux/modules/auth/actions'
 import Input from 'components/Input'
 import Button from 'components/Button'
 import Loading from 'components/Loading'
@@ -65,9 +63,4 @@ const SignupFormWrapper = styled.form`
   box-shadow: ${props => props.theme['box-shadow--strong']};
 `
 
-export default connect(
-  ({ auth }) => ({
-    isLoading: auth.isSignupLoading,
-  }),
-  { signupUser },
-)(SignupForm)
+export default SignupForm

@@ -3,8 +3,9 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import Input from 'components/Input'
 import Button from 'components/Button'
+import Loading from 'components/Loading'
 
-const LoginForm = ({ loginUser }) => {
+const LoginForm = ({ loginUser, isLoading }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -16,6 +17,7 @@ const LoginForm = ({ loginUser }) => {
 
   return (
     <LoginFormWrapper onSubmit={handleSubmit}>
+      <Loading isLoading={isLoading} />
       <Input
         type="email"
         value={email}
@@ -38,6 +40,7 @@ const LoginForm = ({ loginUser }) => {
 
 const LoginFormWrapper = styled.form`
   display: grid;
+  position: relative;
   grid-gap: 1.5rem;
   justify-items: center;
   padding: 1.5rem;

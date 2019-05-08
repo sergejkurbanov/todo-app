@@ -6,7 +6,7 @@ import { loginUser } from 'redux/modules/auth/actions'
 import LoginForm from 'forms/LoginForm'
 import Container from 'components/Container'
 
-const LoginPage = ({ user, location, loginUser }) => {
+const LoginPage = ({ user, location, loginUser, isLoading }) => {
   const { from } = location.state || { from: { pathname: '/' } }
 
   if (user) return <Redirect to={from} />
@@ -14,7 +14,7 @@ const LoginPage = ({ user, location, loginUser }) => {
   return (
     <Flex>
       <Container as="main" mt={100} maxWidth="350px">
-        <LoginForm loginUser={loginUser} />
+        <LoginForm isLoading={isLoading} loginUser={loginUser} />
       </Container>
     </Flex>
   )
@@ -23,6 +23,7 @@ const LoginPage = ({ user, location, loginUser }) => {
 export default connect(
   ({ auth }) => ({
     user: auth.current,
+    isLoading: auth.isLoginLoading,
   }),
   { loginUser },
 )(LoginPage)

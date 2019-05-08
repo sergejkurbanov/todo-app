@@ -1,15 +1,24 @@
+import { toast } from 'react-toastify'
 import * as types from './types'
 
 const defaultState = {
   all: [],
+  isLoading: false,
 }
 
 const todosReducer = (state = defaultState, { type, payload }) => {
   switch (type) {
-    case types.GET_TODOS_SUCCESS: {
-      const { data } = payload
+    case types.GET_TODOS:
+      return { ...state, isLoading: true }
 
-      return { ...state, all: data }
+    case types.GET_TODOS_SUCCESS:
+      return { ...state, all: payload.data, isLoading: false }
+
+    case types.GET_TODOS_ERROR: {
+      toast.error(
+        payload.error.message || 'Error loading todos. Please try again later.',
+      )
+      return { ...state, all: payload.data, isLoading: false }
     }
 
     default:

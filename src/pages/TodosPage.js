@@ -10,11 +10,13 @@ import { connect } from 'react-redux'
 import Header from 'components/Header/index'
 import TodoList from 'components/TodoList'
 import Container from 'components/Container'
+import Loading from 'components/Loading'
 import TodoForm from 'forms/TodoForm'
 
 const TodosPage = ({
   user,
   todos,
+  isLoading,
   createTodo,
   deleteTodo,
   toggleTodo,
@@ -29,6 +31,7 @@ const TodosPage = ({
       <Header />
       <Flex flexDirection="column">
         <Container as="main" px={2} pt={3} maxWidth="500px">
+          <Loading isLoading={isLoading} />
           <TodoForm createTodo={createTodo} />
           <TodoList
             todos={todos}
@@ -45,6 +48,7 @@ export default connect(
   ({ todos, auth }) => ({
     todos: todos.all,
     user: auth.current,
+    isLoading: todos.isLoading,
   }),
   {
     getTodos,
