@@ -1,16 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
-import Container from 'components/Container'
-import Title from 'components/Title'
+import Typography from '@material-ui/core/Typography'
 import LogoutButton from './subcomponents/LogoutButton'
 
 const Header = () => (
   <HeaderWrapper>
-    <Container>
-      <Title type="h1">My todos</Title>I heard a puppy is fed every time someone
-      makes a todo app.
-      <LogoutButton />
-    </Container>
+    <Typography variant="h1" gutterBottom>
+      My todos
+    </Typography>
+    I heard a puppy is fed every time someone makes a todo app.
+    <LogoutButton />
   </HeaderWrapper>
 )
 

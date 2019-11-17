@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default-member */
 import { put, call } from 'redux-saga/effects'
 import usersApi from 'api/users'
 import * as types from './types'

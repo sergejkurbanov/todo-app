@@ -1,16 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { logoutUser } from 'redux/modules/auth/actions'
-import Icon from 'components/Icon'
 
-const LogoutButton = props => (
-  // eslint-disable-next-line
-  <LogoutButtonWrapper onClick={props.logoutUser} {...props}>
-    Logout
-    <Icon icon="logout" />
-  </LogoutButtonWrapper>
-)
+const LogoutButton = () => {
+  const dispatch = useDispatch()
+
+  return (
+    <LogoutButtonWrapper onClick={() => dispatch(logoutUser())}>
+      Logout
+    </LogoutButtonWrapper>
+  )
+}
 
 const LogoutButtonWrapper = styled.span`
   position: absolute;
@@ -28,7 +29,4 @@ const LogoutButtonWrapper = styled.span`
   }
 `
 
-export default connect(
-  null,
-  { logoutUser },
-)(LogoutButton)
+export default LogoutButton

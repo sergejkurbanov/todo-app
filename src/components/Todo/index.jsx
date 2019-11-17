@@ -1,8 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import Checkbox from 'components/Checkbox'
-import Text from './subcomponents/Text'
-import RemoveButton from './subcomponents/RemoveButton'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
 
 const Todo = ({ children, complete, remove, isCompleted }) => (
   <TodoWrapper
@@ -12,16 +12,34 @@ const Todo = ({ children, complete, remove, isCompleted }) => (
       if (!selectedText) complete()
     }}
   >
-    <Checkbox isChecked={isCompleted} />
-    <Text isCompleted={isCompleted}>{children}</Text>
-    <RemoveButton onClick={remove} />
+    <Typography>
+      {isCompleted && '✅'}
+      {children}
+    </Typography>
+    <Button
+      variant="contained"
+      color="primary"
+      onClick={e => {
+        e.stopPropagation()
+        remove()
+      }}
+    >
+      <Typography>Remove todo</Typography>
+    </Button>
   </TodoWrapper>
 )
+
+Todo.propTypes = {
+  complete: PropTypes.func.isRequired,
+  remove: PropTypes.func.isRequired,
+  isCompleted: PropTypes.bool.isRequired,
+  children: PropTypes.element.isRequired,
+}
 
 const TodoWrapper = styled.div`
   display: grid;
   grid-gap: 0.5rem;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr 1fr;
   align-items: center;
   margin: 0.5rem 0;
   background-color: ${props => props.theme['color-gray--light']};
